@@ -6,20 +6,21 @@ export function Button({
     size = "medium",
     children,
     disabled = false,
+    loading = false,
     onClick,
 }: ButtonProps) {
     return (
         <button
         onClick={onClick}
-        disabled={disabled}
+        disabled={disabled || loading}
         className={`
             ${buttonStyles.base}
             ${buttonStyles.variants[variant]}
             ${buttonStyles.sizes[size]}
-            ${disabled ? "opacity-50 cursor-not-allowed" : ""}
+            ${(disabled || loading) ? "opacity-50 cursor-not-allowed" : ""}
         `}
         >
-            {children}
+            {loading ? "Loading..." : children}
         </button>
     );
 }
