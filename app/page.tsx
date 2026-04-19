@@ -1,11 +1,12 @@
 "use client";
 
-import { Input, Button, Card } from "@/src/components/ui";
+import { Input, Button, Card, Modal } from "@/src/components/ui";
 import { useState } from "react";
 
 export default function Home() {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   function handleClick() {
     setLoading(true);
@@ -37,6 +38,20 @@ export default function Home() {
           </Button>
         </div>
       </Card>
+      <Button onClick={() => setIsOpen(true)}>
+        Open Modal
+      </Button>
+
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <div className="space-y-4">
+          <h2 className="text-xl font-bold">Hello!</h2>
+          <p>This is a modal component</p>
+
+          <Button onClick={() => setIsOpen(false)}>
+            Close
+          </Button>
+        </div>
+      </Modal>
     </main>
   );
 }
