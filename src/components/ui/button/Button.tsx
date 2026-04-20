@@ -1,7 +1,8 @@
+"Use state";
 import { ButtonProps } from "./Button.types";
 import { buttonStyles } from "./Button.styles";
 
-export function Button({
+export default function Button({
     variant = "primary",
     size = "medium",
     children,

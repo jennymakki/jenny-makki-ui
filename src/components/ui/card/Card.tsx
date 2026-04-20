@@ -1,7 +1,9 @@
+"Use state";
+
 import { CardProps } from "./Card.types";
 import { cardStyles } from "./Card.styles";
 
-export function Card({
+export default function Card({
   title,
   variant = "default",
   children,

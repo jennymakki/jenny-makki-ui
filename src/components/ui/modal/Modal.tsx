@@ -1,6 +1,7 @@
+"Use state";
 import { ModalProps } from "./Modal.types";
 
-export function Modal({ open, onClose, children }: ModalProps) {
+export default function Modal({ open, onClose, children }: ModalProps) {
   if (!open) return null;
 
   return (

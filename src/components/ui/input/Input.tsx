@@ -1,6 +1,8 @@
+"use client";
+
 import { InputProps } from "./Input.types";
 
-export function Input({
+export default function Input({
     label,
     value,
     onChange,
