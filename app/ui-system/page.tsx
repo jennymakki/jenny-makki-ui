@@ -6,6 +6,7 @@ import { Button, Modal, Card, Input } from "@/src/components/ui";
 export default function UISystemPage() {
   const [name, setName] = useState("");
   const [open, setOpen] = useState(false);
+  const [variant, setVariant] = useState<"default" | "large">("default");
 
   return (
     <main className="p-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">

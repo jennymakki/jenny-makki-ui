@@ -1,16 +1,15 @@
 import { CardProps } from "./Card.types";
+import { cardStyles } from "./Card.styles";
 
-export function Card({ title, children }: CardProps) {
+export function Card({
+  title,
+  variant = "default",
+  children,
+}: CardProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-md p-6 border border-gray-100">
-      
-      {title && (
-        <h3 className="text-lg font-semibold mb-4">
-          {title}
-        </h3>
-      )}
-
-      <div>{children}</div>
+    <div className={`${cardStyles.base} ${cardStyles.variants[variant]}`}>
+      {title && <h3 className="font-semibold mb-4">{title}</h3>}
+      {children}
     </div>
   );
 }
