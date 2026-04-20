@@ -1,4 +1,4 @@
-"Use state";
+"Use client";
 
 import { CardProps } from "./Card.types";
 import { cardStyles } from "./Card.styles";

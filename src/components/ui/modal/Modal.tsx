@@ -1,4 +1,4 @@
-"Use state";
+"Use client";
 import { ModalProps } from "./Modal.types";
 
 export default function Modal({ open, onClose, children }: ModalProps) {

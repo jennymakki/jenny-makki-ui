@@ -1,4 +1,4 @@
-"Use state";
+"Use client";
 import { ButtonProps } from "./Button.types";
 import { buttonStyles } from "./Button.styles";
 
