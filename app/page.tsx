@@ -10,36 +10,23 @@ export default function UISystemPage() {
 
   return (
     <main className="p-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-      <aside className="md:col-span-1 space-y-2 sticky top-10 h-fit">
-        <h2 className="font-bold text-lg">UI System</h2>
+      <aside className="md:col-span-1 md:space-y-2 sticky top-0 bg-white z-10">
+        <h2 className="font-bold text-lg hidden md:block">UI System</h2>
 
-        <a
-          href="#buttons"
-          className="block text-sm text-gray-600 hover:text-black"
-        >
-          Buttons
-        </a>
-
-        <a
-          href="#inputs"
-          className="block text-sm text-gray-600 hover:text-black"
-        >
-          Inputs
-        </a>
-
-        <a
-          href="#card"
-          className="block text-sm text-gray-600 hover:text-black"
-        >
-          Card
-        </a>
-
-        <a
-          href="#modal"
-          className="block text-sm text-gray-600 hover:text-black"
-        >
-          Modal
-        </a>
+        <div className="flex md:flex-col gap-4 overflow-x-auto text-sm text-gray-600">
+          <a href="#buttons" className="hover:text-black whitespace-nowrap">
+            Buttons
+          </a>
+          <a href="#inputs" className="hover:text-black whitespace-nowrap">
+            Inputs
+          </a>
+          <a href="#card" className="hover:text-black whitespace-nowrap">
+            Card
+          </a>
+          <a href="#modal" className="hover:text-black whitespace-nowrap">
+            Modal
+          </a>
+        </div>
       </aside>
       <section className="md:col-span-3 space-y-12">
         <h1 className="text-3xl font-bold text-[#2090C8]">Jenny's UI System</h1>
