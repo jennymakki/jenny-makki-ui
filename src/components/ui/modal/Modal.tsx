@@ -1,21 +1,56 @@
-"Use client";
+"use client";
+
+import { createContext, useContext, useEffect } from "react";
 import { ModalProps } from "./Modal.types";
+import { modalStyles } from "./Modal.styles";
+
+type ModalContextType = {
+  onClose: () => void;
+};
+
+const ModalContext = createContext<ModalContextType | null>(null);
+
+function useModal() {
+  const ctx = useContext(ModalContext);
+  if (!ctx) throw new Error("Modal compound components must be used inside Modal");
+  return ctx;
+}
 
 export default function Modal({ open, onClose, children }: ModalProps) {
   if (!open) return null;
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
+
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50">
-      
-      <div
-        className="absolute inset-0 bg-black/50"
-        onClick={onClose}
-      />
+    <ModalContext.Provider value={{ onClose }}>
+      <div className={modalStyles.wrapper}>
+        <div className={modalStyles.overlay} onClick={onClose} />
 
-      <div className="relative bg-white rounded-2xl p-6 shadow-xl min-w-[300px]">
-        {children}
+        <div className={modalStyles.content}>{children}</div>
       </div>
-
-    </div>
+    </ModalContext.Provider>
   );
-} 
+}
+
+function Header({ children }: { children: React.ReactNode }) {
+  return <div className={modalStyles.header}>{children}</div>;
+}
+
+function Body({ children }: { children: React.ReactNode }) {
+  return <div className={modalStyles.body}>{children}</div>;
+}
+
+function Footer({ children }: { children: React.ReactNode }) {
+  return <div className={modalStyles.footer}>{children}</div>;
+}
+
+Modal.Header = Header;
+Modal.Body = Body;
+Modal.Footer = Footer;

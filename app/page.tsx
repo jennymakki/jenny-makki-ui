@@ -4,6 +4,9 @@ import { useState } from "react";
 import {
   Button,
   Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
   Card,
   Input,
   InputField,
@@ -193,6 +196,74 @@ export default function UISystemPage() {
             Tech: Controlled components, composition pattern, reusable
             primitives, TypeScript typing for form safety.
           </p>
+
+          <section className="space-y-4">
+            <h3 className="text-lg font-semibold">States</h3>
+            <p className="text-sm text-gray-600">
+              Different input states to demonstrate validation, disabled
+              behavior and UI feedback.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <p className="text-xs text-gray-500">Default</p>
+                <InputField
+                  label="Name"
+                  value=""
+                  onChange={() => {}}
+                  placeholder="Enter your name"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-xs text-gray-500">With value</p>
+                <InputField label="Name" value="Jenny" onChange={() => {}} />
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-xs text-gray-500">Disabled</p>
+                <InputField
+                  label="Name"
+                  value="Can't edit"
+                  onChange={() => {}}
+                  disabled
+                />
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-xs text-gray-500">Error state</p>
+                <InputField
+                  label="Email"
+                  value="wrong@email"
+                  onChange={() => {}}
+                  error="Invalid email address"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-xs text-gray-500">With hint</p>
+                <InputField
+                  label="Username"
+                  value=""
+                  onChange={() => {}}
+                  hint="This will be your public username"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-xs text-gray-500">Password input</p>
+                <PasswordInput label="Password" value="" onChange={() => {}} />
+              </div>
+
+              <div className="space-y-2 md:col-span-2">
+                <p className="text-xs text-gray-500">Search input</p>
+                <SearchInput
+                  value=""
+                  onChange={() => {}}
+                  placeholder="Search..."
+                />
+              </div>
+            </div>
+          </section>
         </section>
 
         <section id="password" className="space-y-4 mb-10 pb-10 border-b">
@@ -265,12 +336,20 @@ export default function UISystemPage() {
           <Button onClick={() => setOpen(true)}>Open Modal</Button>
 
           <Modal open={open} onClose={() => setOpen(false)}>
-            <div className="space-y-4">
-              <h3 className="text-lg font-bold">Hello, World!</h3>
-              <p>This is a modal inside the UI System.</p>
+            <Modal.Header>Delete account</Modal.Header>
 
-              <Button onClick={() => setOpen(false)}>Close</Button>
-            </div>
+            <Modal.Body>
+              Are you sure you want to delete your account? This action cannot
+              be undone.
+            </Modal.Body>
+
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+
+              <Button variant="danger">Delete</Button>
+            </Modal.Footer>
           </Modal>
 
           <p className="text-sm text-gray-500">
