@@ -1,12 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Modal, Card, Input, Loader } from "@/src/components/ui";
+import {
+  Button,
+  Modal,
+  Card,
+  Input,
+  InputField,
+  Loader,
+  PasswordInput,
+  SearchInput,
+} from "@/src/components/ui";
 
 export default function UISystemPage() {
   const [name, setName] = useState("");
   const [open, setOpen] = useState(false);
   const [variant, setVariant] = useState<"default" | "large">("default");
+  const [password, setPassword] = useState("");
+  const [search, setSearch] = useState("");
 
   return (
     <main className="p-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
@@ -22,6 +33,12 @@ export default function UISystemPage() {
           </a>
           <a href="#inputs" className="hover:text-black whitespace-nowrap">
             Inputs
+          </a>
+          <a href="#password" className="hover:text-black whitespace-nowrap">
+            Password
+          </a>
+          <a href="#search" className="hover:text-black whitespace-nowrap">
+            Search
           </a>
           <a href="#card" className="hover:text-black whitespace-nowrap">
             Card
@@ -74,6 +91,35 @@ export default function UISystemPage() {
             <Button variant="danger">Danger</Button>
           </div>
 
+          <div className="text-xs text-gray-600 space-y-2 mt-3">
+            <p>
+              <strong>Button system:</strong> reusable variants for different UI
+              contexts and importance levels.
+            </p>
+
+            <p>
+              <strong>Primary:</strong> main call-to-action (submit, save,
+              continue).
+            </p>
+
+            <p>
+              <strong>Secondary:</strong> supporting actions (cancel, back).
+            </p>
+
+            <p>
+              <strong>Ghost:</strong> low-emphasis actions like icon buttons or
+              toggles.
+            </p>
+
+            <p>
+              <strong>Success:</strong> positive actions or confirmations.
+            </p>
+
+            <p>
+              <strong>Danger:</strong> destructive actions (delete, remove).
+            </p>
+          </div>
+
           <p className="text-sm text-gray-500">
             Tech: React components, TypeScript props, Tailwind CSS for styling,
             conditional rendering for states.
@@ -103,25 +149,89 @@ export default function UISystemPage() {
           </p>
         </section>
 
-        <section id="inputs" className="space-y-4 mb-10 pb-10 border-b">
+        <section id="inputs" className="space-y-6 mb-10 pb-10 border-b">
           <h2 className="text-xl font-semibold">Inputs</h2>
 
           <p className="text-gray-600">
             Input components manage user data entry using controlled state. They
-            are connected to React state via <code>value</code> and{" "}
-            <code>onChange</code>.
+            are built as a composition system with a base input and enhanced
+            field wrapper.
           </p>
 
-          <Input
-            label="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Enter text..."
+          {/* Primitive Input */}
+          <div className="space-y-2">
+            <p className="text-xs text-gray-600">Primitive Input</p>
+
+            <Input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Bare input..."
+            />
+          </div>
+
+          {/* Composed InputField */}
+          <div className="space-y-2">
+            <p className="text-xs text-gray-600">
+              InputField (recommended usage)
+            </p>
+
+            <InputField
+              label="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Enter text..."
+            />
+          </div>
+
+          <p className="text-xs text-gray-600 mt-2">
+            Note: Both inputs share state in this demo to illustrate controlled
+            components in React. In real applications they would typically have
+            independent state.
+          </p>
+
+          <p className="text-sm text-gray-500">
+            Tech: Controlled components, composition pattern, reusable
+            primitives, TypeScript typing for form safety.
+          </p>
+        </section>
+
+        <section id="password" className="space-y-4 mb-10 pb-10 border-b">
+          <h2 className="text-xl font-semibold">Password Input</h2>
+
+          <p className="text-gray-600">
+            PasswordInput adds toggle visibility behavior to a normal input.
+          </p>
+
+          <PasswordInput
+            label="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Enter password..."
           />
 
           <p className="text-sm text-gray-500">
-            Tech: Controlled components, React useState, TypeScript interfaces,
-            form handling patterns.
+            Tech: useState toggle, conditional rendering, composition pattern.
+          </p>
+        </section>
+
+        <section id="search" className="space-y-4 mb-10 pb-10 border-b">
+          <h2 className="text-xl font-semibold">Search Input</h2>
+
+          <p className="text-gray-600">
+            SearchInput combines input + icon + optional loader and clear
+            button.
+          </p>
+
+          <SearchInput
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search..."
+            loading={false}
+            onClear={() => setSearch("")}
+          />
+
+          <p className="text-sm text-gray-500">
+            Tech: composition, icon positioning, conditional UI rendering.
           </p>
         </section>
 
