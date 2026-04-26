@@ -1,5 +1,6 @@
 export const loaderStyles = {
-  base: "rounded-full border-2 border-white/30 border-t-white animate-spin",
+  base:
+    "inline-block rounded-full border-2 border-current border-t-transparent animate-spin",
 
   sizes: {
     sm: "w-4 h-4",

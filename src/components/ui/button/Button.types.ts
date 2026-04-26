@@ -1,6 +1,11 @@
 import type { MouseEventHandler, ReactNode } from "react";
 
-export type ButtonVariant = "primary" | "secondary" | "form";
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "ghost"
+  | "success"
+  | "danger";
 
 export type ButtonSize = "small" | "medium" | "large";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button, Modal, Card, Input } from "@/src/components/ui";
+import { Button, Modal, Card, Input, Loader } from "@/src/components/ui";
 
 export default function UISystemPage() {
   const [name, setName] = useState("");
@@ -16,6 +16,9 @@ export default function UISystemPage() {
         <div className="flex md:flex-col gap-4 overflow-x-auto text-sm text-gray-600">
           <a href="#buttons" className="hover:text-black whitespace-nowrap">
             Buttons
+          </a>
+          <a href="#loader" className="hover:text-black whitespace-nowrap">
+            Loader
           </a>
           <a href="#inputs" className="hover:text-black whitespace-nowrap">
             Inputs
@@ -64,16 +67,39 @@ export default function UISystemPage() {
           </p>
 
           <div className="flex gap-3 flex-wrap">
-            <Button>Primary</Button>
+            <Button variant="primary">Primary</Button>
             <Button variant="secondary">Secondary</Button>
-            <Button variant="form" loading>
-              Loading
-            </Button>
+            <Button variant="ghost">Ghost</Button>
+            <Button variant="success">Success</Button>
+            <Button variant="danger">Danger</Button>
           </div>
 
           <p className="text-sm text-gray-500">
             Tech: React components, TypeScript props, Tailwind CSS for styling,
             conditional rendering for states.
+          </p>
+        </section>
+
+        <section
+          id="loader"
+          className="space-y-4 mb-10 pb-10 border-b scroll-mt-20"
+        >
+          <h2 className="text-xl font-semibold">Loader</h2>
+
+          <p className="text-gray-600">
+            Loader is a reusable primitive used to indicate loading states
+            across the UI system.
+          </p>
+
+          <div className="flex items-center gap-6">
+            <Loader size="sm" />
+            <Loader size="md" />
+            <Loader size="lg" />
+          </div>
+
+          <p className="text-sm text-gray-500">
+            Tech: border animation, currentColor inheritance, reusable primitive
+            component.
           </p>
         </section>
 
