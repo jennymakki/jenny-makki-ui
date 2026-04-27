@@ -28,6 +28,9 @@ export default function UISystemPage() {
         <h2 className="font-bold text-lg hidden md:block">UI System</h2>
 
         <div className="flex md:flex-col gap-4 overflow-x-auto text-sm text-gray-600">
+          <a href="/playground" className="hover:text-black whitespace-nowrap">
+  Playground
+</a>
           <a href="#buttons" className="hover:text-black whitespace-nowrap">
             Buttons
           </a>
