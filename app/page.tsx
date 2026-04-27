@@ -306,22 +306,80 @@ export default function UISystemPage() {
           </p>
         </section>
 
-        <section id="card" className="space-y-4 mb-10 pb-10 border-b">
+        <section id="card" className="space-y-6 mb-10 pb-10 border-b">
           <h2 className="text-xl font-semibold">Card</h2>
 
           <p className="text-gray-600">
             Cards are layout components used to group related content in a
-            structured and reusable way. They help maintain visual hierarchy in
-            UI systems.
+            structured and reusable way. They support multiple composition
+            patterns and variants.
           </p>
 
-          <Card title="Example Card">
-            <p>This is a reusable card component.</p>
-          </Card>
+          {/* VARIANTS */}
+          <div className="space-y-4">
+            <h3 className="font-medium">Variants</h3>
+
+            <div className="grid md:grid-cols-3 gap-4">
+              <Card>
+                <Card.Body>Default card</Card.Body>
+              </Card>
+
+              <Card variant="outlined">
+                <Card.Body>Outlined card</Card.Body>
+              </Card>
+
+              <Card variant="elevated">
+                <Card.Body>Elevated card</Card.Body>
+              </Card>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <h3 className="font-medium">Content patterns</h3>
+
+            <div className="grid md:grid-cols-2 gap-4">
+              <Card>
+                <Card.Header>User profile</Card.Header>
+                <Card.Body>
+                  <p>Jenny Makki</p>
+                  <p className="text-sm text-gray-500">Frontend Developer</p>
+                </Card.Body>
+              </Card>
+
+              <Card>
+                <Card.Header>Actions</Card.Header>
+                <Card.Body>
+                  <p className="mb-3">Do you want to continue?</p>
+                  <div className="flex gap-2">
+                    <Button variant="secondary">Cancel</Button>
+                    <Button variant="primary">Confirm</Button>
+                  </div>
+                </Card.Body>
+              </Card>
+
+              <Card>
+                <Card.Header>Loading state</Card.Header>
+                <Card.Body>
+                  <Loader size="sm" />
+                </Card.Body>
+              </Card>
+
+              <Card>
+                <Card.Header>Search inside card</Card.Header>
+                <Card.Body>
+                  <SearchInput
+                    value=""
+                    onChange={() => {}}
+                    placeholder="Search users..."
+                  />
+                </Card.Body>
+              </Card>
+            </div>
+          </div>
 
           <p className="text-sm text-gray-500">
-            Tech: Composition pattern (children props), reusable layout
-            components, Tailwind styling system.
+            Tech: Composition pattern, variant system, reusable UI primitives,
+            component-driven design system architecture.
           </p>
         </section>
 

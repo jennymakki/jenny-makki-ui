@@ -1,7 +1,9 @@
-export type CardVariant = "default" | "outlined";
+import React from "react";
+
+export type CardVariant = "default" | "outlined" | "elevated";
 
 export interface CardProps {
-  title?: string;
   variant?: CardVariant;
   children: React.ReactNode;
+  className?: string;
 }
