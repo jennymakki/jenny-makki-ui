@@ -15,7 +15,7 @@ import {
 
 export default function UISystemPage() {
   const [primitiveName, setPrimitiveName] = useState("");
-const [fieldName, setFieldName] = useState("");
+  const [fieldName, setFieldName] = useState("");
   const [open, setOpen] = useState(false);
   const [password, setPassword] = useState("");
   const [search, setSearch] = useState("");
@@ -78,37 +78,35 @@ const [fieldName, setFieldName] = useState("");
       </section>
 
       {/* PLAYGROUND CTA */}
-<section className="max-w-6xl mx-auto px-6 mb-20">
-  <div className="relative overflow-hidden rounded-3xl p-8 bg-gradient-to-r from-[#d94a9c] via-[#E85AAD] to-[#c93c8c] text-white flex flex-col md:flex-row md:items-center md:justify-between gap-6 shadow-[0_20px_60px_rgba(217,74,156,0.25)]">
+      <section className="max-w-6xl mx-auto px-6 mb-20">
+        <div className="relative overflow-hidden rounded-3xl p-8 bg-gradient-to-r from-[#d94a9c] via-[#E85AAD] to-[#c93c8c] text-white flex flex-col md:flex-row md:items-center md:justify-between gap-6 shadow-[0_20px_60px_rgba(217,74,156,0.25)]">
+          {/* subtle glow overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.25),transparent_60%)] opacity-20" />
 
-    {/* subtle glow overlay */}
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.25),transparent_60%)] opacity-20" />
+          {/* content */}
+          <div className="relative">
+            <p className="text-xs uppercase opacity-70">Interactive</p>
 
-    {/* content */}
-    <div className="relative">
-      <p className="text-xs uppercase opacity-70">Interactive</p>
+            <h2 className="text-2xl font-semibold mt-1">
+              Explore components in real-time
+            </h2>
 
-      <h2 className="text-2xl font-semibold mt-1">
-        Explore components in real-time
-      </h2>
+            <p className="text-sm opacity-80 mt-2">
+              Test props, states and UI behavior in the playground.
+            </p>
+          </div>
 
-      <p className="text-sm opacity-80 mt-2">
-        Test props, states and UI behavior in the playground.
-      </p>
-    </div>
-
-    {/* optional CTA button area (om du vill använda senare) */}
-    <div className="relative flex gap-3">
-      <a
-        href="/playground"
-        className="px-5 py-2 rounded-xl bg-white text-[#E85AAD] font-medium hover:bg-white/90 transition"
-      >
-        Open Playground
-      </a>
-    </div>
-
-  </div>
-</section>
+          {/* optional CTA button area (om du vill använda senare) */}
+          <div className="relative flex gap-3">
+            <a
+              href="/playground"
+              className="px-5 py-2 rounded-xl bg-white text-[#E85AAD] font-medium hover:bg-white/90 transition"
+            >
+              Open Playground
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* COMPONENTS */}
       <section
@@ -137,28 +135,28 @@ const [fieldName, setFieldName] = useState("");
         <div className="space-y-8">
           <h2 className="text-2xl font-semibold">Inputs</h2>
 
-  {/* Primitive Input */}
-  <div className="space-y-2 max-w-md">
-    <p className="text-sm text-gray-500">Primitive input</p>
+          {/* Primitive Input */}
+          <div className="space-y-2 max-w-md">
+            <p className="text-sm text-gray-500">Primitive input</p>
 
-    <Input
-      value={primitiveName}
-      onChange={(e) => setPrimitiveName(e.target.value)}
-      placeholder="Type something..."
-    />
-  </div>
+            <Input
+              value={primitiveName}
+              onChange={(e) => setPrimitiveName(e.target.value)}
+              placeholder="Type something..."
+            />
+          </div>
 
-  {/* InputField */}
-  <div className="space-y-2 max-w-md">
-    <p className="text-sm text-gray-500">InputField (recommended)</p>
+          {/* InputField */}
+          <div className="space-y-2 max-w-md">
+            <p className="text-sm text-gray-500">InputField (recommended)</p>
 
-    <InputField
-      label="Name"
-      value={fieldName}
-      onChange={(e) => setFieldName(e.target.value)}
-      placeholder="Enter your name"
-    />
-  </div>
+            <InputField
+              label="Name"
+              value={fieldName}
+              onChange={(e) => setFieldName(e.target.value)}
+              placeholder="Enter your name"
+            />
+          </div>
 
           {/* Password */}
           <div className="space-y-2 max-w-md">
