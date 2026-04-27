@@ -333,23 +333,27 @@ export default function UISystemPage() {
             specific task. They are controlled via state (open/close).
           </p>
 
+          <p className="text-xs text-gray-600 mt-2">
+            This modal is built using a{" "}
+            <strong>compound component pattern</strong>, allowing structured
+            composition with <code>Modal.Header</code>, <code>Modal.Body</code>{" "}
+            and <code>Modal.Footer</code>.
+          </p>
+
           <Button onClick={() => setOpen(true)}>Open Modal</Button>
 
           <Modal open={open} onClose={() => setOpen(false)}>
-            <Modal.Header>Delete account</Modal.Header>
+            <ModalHeader>Delete account</ModalHeader>
 
-            <Modal.Body>
-              Are you sure you want to delete your account? This action cannot
-              be undone.
-            </Modal.Body>
+            <ModalBody>Are you sure you want to delete your account?</ModalBody>
 
-            <Modal.Footer>
+            <ModalFooter>
               <Button variant="secondary" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
 
               <Button variant="danger">Delete</Button>
-            </Modal.Footer>
+            </ModalFooter>
           </Modal>
 
           <p className="text-sm text-gray-500">

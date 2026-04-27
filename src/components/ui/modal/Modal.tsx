@@ -1,8 +1,10 @@
 "use client";
 
 import { createContext, useContext, useEffect } from "react";
-import { ModalProps } from "./Modal.types";
+import { createPortal } from "react-dom";
+import type { ModalCompound } from "./Modal.types";
 import { modalStyles } from "./Modal.styles";
+import Button from "../button";
 
 type ModalContextType = {
   onClose: () => void;
@@ -12,45 +14,64 @@ const ModalContext = createContext<ModalContextType | null>(null);
 
 function useModal() {
   const ctx = useContext(ModalContext);
-  if (!ctx) throw new Error("Modal compound components must be used inside Modal");
+  if (!ctx) {
+    throw new Error("Modal compound components must be used inside Modal");
+  }
   return ctx;
 }
 
-export default function Modal({ open, onClose, children }: ModalProps) {
-  if (!open) return null;
-
+const Modal: ModalCompound = ({ open, onClose, children }) => {
   useEffect(() => {
+    if (!open) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [onClose]);
+  }, [open, onClose]);
 
-  return (
+  if (!open) return null;
+
+  return createPortal(
     <ModalContext.Provider value={{ onClose }}>
       <div className={modalStyles.wrapper}>
         <div className={modalStyles.overlay} onClick={onClose} />
 
-        <div className={modalStyles.content}>{children}</div>
+        <div
+          className={modalStyles.content}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {children}
+        </div>
       </div>
-    </ModalContext.Provider>
+    </ModalContext.Provider>,
+    document.body
   );
-}
+};
 
-function Header({ children }: { children: React.ReactNode }) {
-  return <div className={modalStyles.header}>{children}</div>;
-}
+const Header = ({ children }: { children: React.ReactNode }) => {
+  const { onClose } = useModal();
 
-function Body({ children }: { children: React.ReactNode }) {
-  return <div className={modalStyles.body}>{children}</div>;
-}
+  return (
+    <div className={modalStyles.header + " flex justify-between items-center"}>
+      {children}
+    </div>
+  );
+};
 
-function Footer({ children }: { children: React.ReactNode }) {
-  return <div className={modalStyles.footer}>{children}</div>;
-}
+const Body = ({ children }: { children: React.ReactNode }) => (
+  <div className={modalStyles.body}>{children}</div>
+);
+
+const Footer = ({ children }: { children: React.ReactNode }) => (
+  <div className={modalStyles.footer}>{children}</div>
+);
 
 Modal.Header = Header;
 Modal.Body = Body;
 Modal.Footer = Footer;
+
+export default Modal;
+export { useModal };
