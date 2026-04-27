@@ -1,46 +1,96 @@
 "use client";
 
 import { useState } from "react";
-import { Card, Button } from "@/src/components/ui";
+import { Card, Button, SearchInput } from "@/src/components/ui";
 
 export default function CardPlayground() {
-  const [variant, setVariant] = useState("default");
+  const [variant, setVariant] = useState<
+    "default" | "outlined" | "elevated"
+  >("default");
 
   return (
-    <Card>
-      <Card.Header>Card Playground</Card.Header>
+    <div className="space-y-6">
+<h2 className="text-lg font-semibold">Card Playground</h2>
+      {/* INFO */}
+      <div className="space-y-1">
+        <p className="text-sm text-gray-600">
+          Change variant and explore composition patterns live
+        </p>
+      </div>
 
-      <Card.Body>
-        <div className="grid md:grid-cols-2 gap-6">
-          
-          {/* Controls */}
-          <div className="space-y-4">
-            <div>
-              <p className="text-sm">Variant</p>
-              <select
-                value={variant}
-                onChange={(e) => setVariant(e.target.value)}
-                className="border p-2 rounded w-full"
-              >
-                <option value="default">default</option>
-                <option value="outlined">outlined</option>
-                <option value="elevated">elevated</option>
-              </select>
-            </div>
+      {/* VARIANT SWITCHER */}
+      <div className="flex gap-2 flex-wrap">
+        <Button size="small" onClick={() => setVariant("default")}>
+          Default
+        </Button>
+
+        <Button size="small" onClick={() => setVariant("outlined")}>
+          Outlined
+        </Button>
+
+        <Button size="small" onClick={() => setVariant("elevated")}>
+          Elevated
+        </Button>
+      </div>
+
+      {/* MAIN CARD DEMO */}
+      <Card variant={variant}>
+        <Card.Header>Product Card</Card.Header>
+
+        <Card.Body>
+          <p className="text-gray-600">
+            This is a composable card with live variant switching.
+          </p>
+
+          <div className="mt-4">
+            <SearchInput
+              value=""
+              onChange={() => {}}
+              placeholder="Search inside card..."
+            />
           </div>
+        </Card.Body>
 
-          {/* Preview */}
-          <div className="border rounded-xl p-6">
-            <Card variant={variant as any}>
-              <Card.Header>Preview Card</Card.Header>
-              <Card.Body>
-                This is a live preview of the card component.
-              </Card.Body>
-            </Card>
-          </div>
+        <Card.Footer>
+          <Button variant="secondary" size="medium">
+            Cancel
+          </Button>
+          <Button variant="primary" size="medium">
+            Save
+          </Button>
+        </Card.Footer>
+      </Card>
 
-        </div>
-      </Card.Body>
-    </Card>
+      {/* REAL USE CASES */}
+      <div className="grid md:grid-cols-2 gap-4">
+
+        <Card variant={variant}>
+          <Card.Header>User Profile</Card.Header>
+
+          <Card.Body>
+            <p className="font-medium">Jenny Makki</p>
+            <p className="text-sm text-gray-500">Frontend Developer</p>
+          </Card.Body>
+        </Card>
+
+        <Card variant={variant}>
+          <Card.Header>Action Required</Card.Header>
+
+          <Card.Body>
+            <p>Are you sure you want to continue?</p>
+          </Card.Body>
+
+          <Card.Footer>
+            <Button variant="secondary" size="medium">
+              Cancel
+            </Button>
+            <Button variant="danger" size="medium">
+              Delete
+            </Button>
+          </Card.Footer>
+        </Card>
+
+      </div>
+    </div>
   );
 }

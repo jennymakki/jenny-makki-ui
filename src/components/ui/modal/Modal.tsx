@@ -1,77 +1,48 @@
 "use client";
 
-import { createContext, useContext, useEffect } from "react";
-import { createPortal } from "react-dom";
-import type { ModalCompound } from "./Modal.types";
+import React from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
+import { ModalProps, ModalCompound } from "./Modal.types";
 import { modalStyles } from "./Modal.styles";
-import Button from "../button";
 
-type ModalContextType = {
-  onClose: () => void;
-};
-
-const ModalContext = createContext<ModalContextType | null>(null);
-
-function useModal() {
-  const ctx = useContext(ModalContext);
-  if (!ctx) {
-    throw new Error("Modal compound components must be used inside Modal");
-  }
-  return ctx;
-}
+import { ModalHeader } from "./Modal.Header";
+import { ModalBody } from "./Modal.Body";
+import { ModalFooter } from "./Modal.Footer";
 
 const Modal: ModalCompound = ({ open, onClose, children }) => {
-  useEffect(() => {
-    if (!open) return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [open, onClose]);
-
-  if (!open) return null;
-
-  return createPortal(
-    <ModalContext.Provider value={{ onClose }}>
-      <div className={modalStyles.wrapper}>
-        <div className={modalStyles.overlay} onClick={onClose} />
-
-        <div
-          className={modalStyles.content}
-          onClick={(e) => e.stopPropagation()}
-        >
-          {children}
-        </div>
-      </div>
-    </ModalContext.Provider>,
-    document.body
-  );
-};
-
-const Header = ({ children }: { children: React.ReactNode }) => {
-  const { onClose } = useModal();
-
   return (
-    <div className={modalStyles.header + " flex justify-between items-center"}>
-      {children}
-    </div>
+    <AnimatePresence>
+      {open && (
+        <div className={modalStyles.wrapper}>
+          {/* overlay */}
+          <motion.div
+            className={modalStyles.overlay}
+            onClick={onClose}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          />
+
+          {/* content */}
+          <motion.div
+            className={modalStyles.content}
+            initial={{ opacity: 0, scale: 0.95, y: 10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 10 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+          >
+            {children}
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 };
 
-const Body = ({ children }: { children: React.ReactNode }) => (
-  <div className={modalStyles.body}>{children}</div>
-);
-
-const Footer = ({ children }: { children: React.ReactNode }) => (
-  <div className={modalStyles.footer}>{children}</div>
-);
-
-Modal.Header = Header;
-Modal.Body = Body;
-Modal.Footer = Footer;
+// compound components
+Modal.Header = ModalHeader;
+Modal.Body = ModalBody;
+Modal.Footer = ModalFooter;
 
 export default Modal;
-export { useModal };

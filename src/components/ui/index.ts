@@ -1,9 +1,6 @@
 export { default as Button } from "./button/Button";
 export { default as Input } from "./input/Input";
 export { default as Modal } from "./modal";
-export { default as ModalHeader } from "./modal/Modal.Header";
-export { default as ModalBody } from "./modal/Modal.Body";
-export { default as ModalFooter } from "./modal/Modal.Footer";
 export { default as Card } from "./card/Card";
 export { default as Loader } from "./loader/Loader";
 export { default as InputField } from "./input-field";

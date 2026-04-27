@@ -6,8 +6,12 @@ export interface ModalProps {
   children: ReactNode;
 }
 
+export interface ModalSectionProps {
+  children: ReactNode;
+}
+
 export type ModalCompound = React.FC<ModalProps> & {
-  Header: React.FC<{ children: ReactNode }>;
-  Body: React.FC<{ children: ReactNode }>;
-  Footer: React.FC<{ children: ReactNode }>;
+  Header: React.FC<ModalSectionProps>;
+  Body: React.FC<ModalSectionProps>;
+  Footer: React.FC<ModalSectionProps>;
 };

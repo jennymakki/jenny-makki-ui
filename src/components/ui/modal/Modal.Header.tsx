@@ -1,26 +1,32 @@
 "use client";
 
-import { useModal } from "./Modal";
-import { modalStyles } from "./Modal.styles";
-import Button from "../button";
+import React from "react";
 
-export default function ModalHeader({
-  children,
-  showClose = true,
-}: {
+export type ModalHeaderProps = {
   children: React.ReactNode;
-  showClose?: boolean;
-}) {
-  const { onClose } = useModal();
+  className?: string;
+  onClose?: () => void;
+};
 
+export function ModalHeader({
+  children,
+  className = "",
+  onClose,
+}: ModalHeaderProps) {
   return (
-    <div className={`${modalStyles.header} flex justify-between items-center`}>
+    <div
+      className={`px-6 py-4 border-b font-semibold flex items-center justify-between ${className}`}
+    >
       <div>{children}</div>
 
-      {showClose && (
-        <Button variant="ghost" size="small" onClick={onClose}>
+      {onClose && (
+        <button
+          onClick={onClose}
+          className="text-gray-400 hover:text-black transition text-lg leading-none"
+          aria-label="Close modal"
+        >
           ✕
-        </Button>
+        </button>
       )}
     </div>
   );

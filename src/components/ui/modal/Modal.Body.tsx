@@ -1,9 +1,16 @@
-import { modalStyles } from "./Modal.styles";
+"use client";
 
-export default function ModalBody({
-  children,
-}: {
+import React from "react";
+
+export type ModalBodyProps = {
   children: React.ReactNode;
-}) {
-  return <div className={modalStyles.body}>{children}</div>;
+  className?: string;
+};
+
+export function ModalBody({ children, className = "" }: ModalBodyProps) {
+  return (
+    <div className={`px-6 py-4 ${className}`}>
+      {children}
+    </div>
+  );
 }
