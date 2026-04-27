@@ -6,10 +6,12 @@ export const buttonStyles = {
 
   variants: {
     primary:
-      "bg-blue-500 text-white hover:bg-blue-600 focus:ring-blue-400",
+      "bg-[#E85AAD] text-white hover:bg-[#d94a9c] focus:ring-[#f3a4cf]",
 
-    secondary:
-      "bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-300",
+secondary:
+  "bg-white text-[#E85AAD] border-2 border-[#E85AAD] " +
+  "hover:bg-[#E85AAD] hover:text-white hover:border-[#E85AAD] " +
+  "focus:ring-[#f3a4cf]",
 
     ghost:
       "bg-transparent text-gray-900 hover:bg-gray-100 active:bg-gray-200",

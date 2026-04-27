@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import {
   Button,
   Modal,
@@ -13,199 +14,193 @@ import {
 } from "@/src/components/ui";
 
 export default function UISystemPage() {
-  const [name, setName] = useState("");
+  const [primitiveName, setPrimitiveName] = useState("");
+const [fieldName, setFieldName] = useState("");
   const [open, setOpen] = useState(false);
   const [password, setPassword] = useState("");
   const [search, setSearch] = useState("");
 
   return (
-    <main className="p-10 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-      {/* SIDEBAR */}
-      <aside className="md:col-span-1 md:space-y-2 sticky top-0 bg-white z-10">
-
-        <h2 className="font-bold text-lg hidden md:block">UI System</h2>
-
-        {/* PLAYGROUND FEATURE BLOCK */}
-        <div className="mb-6 p-4 rounded-xl bg-[#2090C8] text-white">
-          <p className="text-xs uppercase opacity-70">Interactive</p>
-
-          <a
-            href="/playground"
-            className="text-lg font-semibold block mt-1 hover:opacity-90"
-          >
-            Playground
-          </a>
-
-          <p className="text-xs opacity-80 mt-1">
-            Explore components with live controls
-          </p>
-        </div>
-
-        <div className="flex md:flex-col gap-4 overflow-x-auto text-sm text-gray-600">
-          <a href="#buttons">Buttons</a>
-          <a href="#loader">Loader</a>
-          <a href="#inputs">Inputs</a>
-          <a href="#password">Password</a>
-          <a href="#search">Search</a>
-          <a href="#card">Card</a>
-          <a href="#modal">Modal</a>
-        </div>
-      </aside>
-
-      {/* CONTENT */}
-      <section className="md:col-span-3 space-y-16">
-        <h1 className="text-3xl font-bold text-[#2090C8]">
-          Jenny's UI System
+    <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+      {/* HERO */}
+      <section className="max-w-6xl mx-auto px-6 pt-16 pb-12 space-y-6">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#E85AAD]">
+          Jenny UI System
         </h1>
 
-        {/* INTRO CARDS */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <Card>
-            <Card.Body>
-              <h3 className="font-semibold">Design System</h3>
-              <p className="text-sm text-gray-600 mt-1">
-                Reusable UI components built with React + TypeScript.
-              </p>
-            </Card.Body>
-          </Card>
+        <p className="text-lg text-gray-600 max-w-2xl">
+          A reusable component system built with React, TypeScript and Tailwind.
+          Focused on consistency, composition and developer experience.
+        </p>
 
-          <Card>
-            <Card.Body>
-              <h3 className="font-semibold">Tech Stack</h3>
-              <p className="text-sm text-gray-600 mt-1">
-                Next.js, React, TypeScript, Tailwind CSS
-              </p>
-            </Card.Body>
-          </Card>
+        <div className="flex gap-4 items-center">
+          <Link href="/playground">
+            <Button size="large">Open Playground</Button>
+          </Link>
 
-          <Card>
-            <Card.Body>
-              <h3 className="font-semibold">Principles</h3>
-              <p className="text-sm text-gray-600 mt-1">
-                Reusability, consistency, composition
-              </p>
-            </Card.Body>
-          </Card>
+          <a
+            href="#components"
+            className="text-gray-600 hover:text-black transition"
+          >
+            Browse components →
+          </a>
         </div>
+      </section>
 
+      {/* FEATURE CARDS */}
+      <section className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6 mb-16">
+        <Card>
+          <Card.Body>
+            <h3 className="font-semibold">Reusable</h3>
+            <p className="text-sm text-gray-600 mt-1">
+              Built with composable patterns and flexible APIs.
+            </p>
+          </Card.Body>
+        </Card>
+
+        <Card>
+          <Card.Body>
+            <h3 className="font-semibold">Type-safe</h3>
+            <p className="text-sm text-gray-600 mt-1">
+              Fully typed with TypeScript.
+            </p>
+          </Card.Body>
+        </Card>
+
+        <Card>
+          <Card.Body>
+            <h3 className="font-semibold">Composable</h3>
+            <p className="text-sm text-gray-600 mt-1">
+              Compound components and reusable primitives.
+            </p>
+          </Card.Body>
+        </Card>
+      </section>
+
+      {/* PLAYGROUND CTA */}
+<section className="max-w-6xl mx-auto px-6 mb-20">
+  <div className="relative overflow-hidden rounded-3xl p-8 bg-gradient-to-r from-[#d94a9c] via-[#E85AAD] to-[#c93c8c] text-white flex flex-col md:flex-row md:items-center md:justify-between gap-6 shadow-[0_20px_60px_rgba(217,74,156,0.25)]">
+
+    {/* subtle glow overlay */}
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.25),transparent_60%)] opacity-20" />
+
+    {/* content */}
+    <div className="relative">
+      <p className="text-xs uppercase opacity-70">Interactive</p>
+
+      <h2 className="text-2xl font-semibold mt-1">
+        Explore components in real-time
+      </h2>
+
+      <p className="text-sm opacity-80 mt-2">
+        Test props, states and UI behavior in the playground.
+      </p>
+    </div>
+
+    {/* optional CTA button area (om du vill använda senare) */}
+    <div className="relative flex gap-3">
+      <a
+        href="/playground"
+        className="px-5 py-2 rounded-xl bg-white text-[#E85AAD] font-medium hover:bg-white/90 transition"
+      >
+        Open Playground
+      </a>
+    </div>
+
+  </div>
+</section>
+
+      {/* COMPONENTS */}
+      <section
+        id="components"
+        className="max-w-6xl mx-auto px-6 space-y-20 pb-20"
+      >
         {/* BUTTONS */}
-        <section id="buttons" className="space-y-6 border-b pb-10">
-          <h2 className="text-xl font-semibold">Buttons</h2>
+        <div className="space-y-6">
+          <h2 className="text-2xl font-semibold">Buttons</h2>
 
-          <p className="text-gray-600">
-            Buttons trigger user actions and decisions in the interface.
+          <p className="text-gray-600 max-w-xl">
+            Buttons trigger user actions and communicate hierarchy through
+            variants.
           </p>
 
-          <div className="text-sm text-gray-500">
-            <strong>Use when:</strong> submitting forms, confirming actions, navigation
-          </div>
-
           <div className="flex gap-3 flex-wrap">
-            <Button variant="primary">Primary</Button>
+            <Button>Primary</Button>
             <Button variant="secondary">Secondary</Button>
             <Button variant="ghost">Ghost</Button>
             <Button variant="success">Success</Button>
             <Button variant="danger">Danger</Button>
           </div>
-        </section>
-
-        {/* LOADER */}
-        <section id="loader" className="space-y-6 border-b pb-10">
-          <h2 className="text-xl font-semibold">Loader</h2>
-
-          <p className="text-gray-600">
-            Loader indicates loading or processing states in the UI.
-          </p>
-
-          <div className="flex items-center gap-6">
-            <Loader size="sm" />
-            <Loader size="md" />
-            <Loader size="lg" />
-          </div>
-        </section>
+        </div>
 
         {/* INPUTS */}
-        <section id="inputs" className="space-y-8 border-b pb-10">
-          <h2 className="text-xl font-semibold">Inputs</h2>
+        <div className="space-y-8">
+          <h2 className="text-2xl font-semibold">Inputs</h2>
 
-          <p className="text-gray-600">
-            Inputs handle user data entry using controlled components.
-          </p>
+  {/* Primitive Input */}
+  <div className="space-y-2 max-w-md">
+    <p className="text-sm text-gray-500">Primitive input</p>
 
-          <div className="space-y-2">
-            <p className="text-xs text-gray-500">Primitive Input</p>
-            <Input
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Type..."
+    <Input
+      value={primitiveName}
+      onChange={(e) => setPrimitiveName(e.target.value)}
+      placeholder="Type something..."
+    />
+  </div>
+
+  {/* InputField */}
+  <div className="space-y-2 max-w-md">
+    <p className="text-sm text-gray-500">InputField (recommended)</p>
+
+    <InputField
+      label="Name"
+      value={fieldName}
+      onChange={(e) => setFieldName(e.target.value)}
+      placeholder="Enter your name"
+    />
+  </div>
+
+          {/* Password */}
+          <div className="space-y-2 max-w-md">
+            <p className="text-sm text-gray-500">Password</p>
+
+            <PasswordInput
+              label="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
 
-          <div className="space-y-2">
-            <p className="text-xs text-gray-500">InputField (recommended)</p>
-            <InputField
-              label="Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Enter text..."
+          {/* Search */}
+          <div className="space-y-2 max-w-md">
+            <p className="text-sm text-gray-500">Search</p>
+
+            <SearchInput
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search..."
+              onClear={() => setSearch("")}
             />
           </div>
-        </section>
+        </div>
 
-        {/* PASSWORD */}
-        <section id="password" className="space-y-6 border-b pb-10">
-          <h2 className="text-xl font-semibold">Password Input</h2>
+        {/* CARDS */}
+        <div className="space-y-6">
+          <h2 className="text-2xl font-semibold">Cards</h2>
 
-          <p className="text-gray-600">
-            PasswordInput adds visibility toggle behavior.
-          </p>
-
-          <PasswordInput
-            label="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </section>
-
-        {/* SEARCH */}
-        <section id="search" className="space-y-6 border-b pb-10">
-          <h2 className="text-xl font-semibold">Search Input</h2>
-
-          <p className="text-gray-600">
-            SearchInput combines input, icon and optional actions.
-          </p>
-
-          <SearchInput
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search..."
-            onClear={() => setSearch("")}
-          />
-        </section>
-
-        {/* CARD */}
-        <section id="card" className="space-y-8 border-b pb-10">
-          <h2 className="text-xl font-semibold">Card</h2>
-
-          <p className="text-gray-600">
-            Cards group related content and support composition patterns.
-          </p>
-
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-6">
             <Card>
               <Card.Body>Default</Card.Body>
             </Card>
-
             <Card variant="outlined">
               <Card.Body>Outlined</Card.Body>
             </Card>
-
             <Card variant="elevated">
               <Card.Body>Elevated</Card.Body>
             </Card>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-6">
             <Card>
               <Card.Header>User</Card.Header>
               <Card.Body>Jenny Makki</Card.Body>
@@ -213,55 +208,47 @@ export default function UISystemPage() {
 
             <Card>
               <Card.Header>Actions</Card.Header>
-              <Card.Body className="flex gap-2">
+              <Card.Footer>
                 <Button variant="secondary">Cancel</Button>
                 <Button>Confirm</Button>
-              </Card.Body>
-            </Card>
-
-            <Card>
-              <Card.Header>Loading</Card.Header>
-              <Card.Body>
-                <Loader size="sm" />
-              </Card.Body>
-            </Card>
-
-            <Card>
-              <Card.Header>Search</Card.Header>
-              <Card.Body>
-                <SearchInput
-                  value=""
-                  onChange={() => {}}
-                  placeholder="Search..."
-                />
-              </Card.Body>
+              </Card.Footer>
             </Card>
           </div>
-        </section>
+        </div>
 
         {/* MODAL */}
-        <section id="modal" className="space-y-6">
-          <h2 className="text-xl font-semibold">Modal</h2>
+        <div className="space-y-6">
+          <h2 className="text-2xl font-semibold">Modal</h2>
 
-          <p className="text-gray-600">
-            Modal focuses user attention on critical actions.
-          </p>
+          <Button onClick={() => setOpen(true)}>Open modal</Button>
 
-          <Button onClick={() => setOpen(true)}>Open Modal</Button>
+          <Modal open={open} onClose={() => setOpen(false)}>
+            <Modal.Header onClose={() => setOpen(false)}>
+              Delete account
+            </Modal.Header>
 
-<Modal open={open} onClose={() => setOpen(false)}>
-  <Modal.Header>Delete account</Modal.Header>
+            <Modal.Body>This action cannot be undone.</Modal.Body>
 
-  <Modal.Body>Are you sure?</Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
 
-  <Modal.Footer>
-    <Button variant="secondary" onClick={() => setOpen(false)}>
-      Cancel
-    </Button>
-    <Button variant="danger">Delete</Button>
-  </Modal.Footer>
-</Modal>
-        </section>
+              <Button variant="danger">Delete</Button>
+            </Modal.Footer>
+          </Modal>
+        </div>
+
+        {/* LOADER */}
+        <div className="space-y-6">
+          <h2 className="text-2xl font-semibold">Loader</h2>
+
+          <div className="flex gap-6">
+            <Loader size="sm" />
+            <Loader size="md" />
+            <Loader size="lg" />
+          </div>
+        </div>
       </section>
     </main>
   );
