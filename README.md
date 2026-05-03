@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jenny Makki – UI System
 
-## Getting Started
+A reusable UI component system built with React, TypeScript and Tailwind CSS.
 
-First, run the development server:
+This project was created to deepen my understanding of component-driven development and modern frontend architecture.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Live Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+https://jenny-makki-ui.vercel.app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Overview
 
-To learn more about Next.js, take a look at the following resources:
+This project explores how a scalable and maintainable UI system can be built using reusable components and composition patterns.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+It includes a set of primitives and higher-level components designed to be used together in real applications:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Button system with multiple variants
+- Input primitives (Input, InputField, SearchInput, PasswordInput)
+- Card component with composition (Header, Body, Footer)
+- Modal with structured layout
+- Chat interface demonstrating real-world usage
+- Playground for interactive component testing
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Motivation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The purpose of this project was to move beyond isolated UI components and focus on how a complete component system is structured in practice.
+
+Key focus areas:
+
+- Composition over duplication
+- Strong typing with TypeScript
+- Consistent design patterns across components
+- Real-world usage instead of isolated examples
+- Developer experience and API design
+
+---
+
+## Demo Application
+
+The included chat demo shows how the components behave in a realistic application setting.
+
+It demonstrates:
+
+- Sidebar navigation structure
+- Chat message rendering with different roles
+- Modal-based settings flow
+- Controlled input handling and state management
+
+---
+
+## Playground
+
+The playground is an interactive environment for testing components in isolation.
+
+It allows you to:
+
+- Switch between component variants
+- Test different states and behaviors
+- Explore composition patterns
+
+---
+
+## Tech Stack
+
+- React
+- Next.js
+- TypeScript
+- Tailwind CSS
+
+---
+
+## Key Learnings
+
+- Designing scalable component architecture
+- Building reusable UI primitives
+- Managing state in composed components
+- Structuring a design system in a real project
+- Improving developer experience through API design
+
+---
+
+## Notes
+
+This project is part of my learning process as a frontend developer, with a focus on UI systems, usability and scalable component architecture.
