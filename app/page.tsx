@@ -24,8 +24,8 @@ export default function UISystemPage() {
     <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       {/* HERO */}
       <section className="max-w-6xl mx-auto px-6 pt-16 pb-12 space-y-6">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#E85AAD]">
-          Jenny UI System
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-[#F97316]">
+          Jenny's UI System
         </h1>
 
         <p className="text-lg text-gray-600 max-w-2xl">
@@ -36,6 +36,9 @@ export default function UISystemPage() {
         <div className="flex gap-4 items-center">
           <Link href="/playground">
             <Button size="large">Open Playground</Button>
+          </Link>
+           <Link href="/demo">
+            <Button variant="secondary" size="large">View Demo App</Button>
           </Link>
 
           <a
@@ -79,11 +82,10 @@ export default function UISystemPage() {
 
       {/* PLAYGROUND CTA */}
       <section className="max-w-6xl mx-auto px-6 mb-20">
-        <div className="relative overflow-hidden rounded-3xl p-8 bg-gradient-to-r from-[#d94a9c] via-[#E85AAD] to-[#c93c8c] text-white flex flex-col md:flex-row md:items-center md:justify-between gap-6 shadow-[0_20px_60px_rgba(217,74,156,0.25)]">
-          {/* subtle glow overlay */}
+        <div className="relative overflow-hidden rounded-3xl p-8 bg-gradient-to-r from-[#ea680c] via-[#F97316] to-[#fb923c] text-white flex flex-col md:flex-row md:items-center md:justify-between gap-6 shadow-[0_20px_60px_rgba(249,115,22,0.25)]">
+
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.25),transparent_60%)] opacity-20" />
 
-          {/* content */}
           <div className="relative">
             <p className="text-xs uppercase opacity-70">Interactive</p>
 
@@ -96,11 +98,10 @@ export default function UISystemPage() {
             </p>
           </div>
 
-          {/* optional CTA button area (om du vill använda senare) */}
           <div className="relative flex gap-3">
             <a
               href="/playground"
-              className="px-5 py-2 rounded-xl bg-white text-[#E85AAD] font-medium hover:bg-white/90 transition"
+              className="px-5 py-2 rounded-xl bg-white text-[#F97316] font-medium hover:bg-white/90 transition"
             >
               Open Playground
             </a>
@@ -118,8 +119,7 @@ export default function UISystemPage() {
           <h2 className="text-2xl font-semibold">Buttons</h2>
 
           <p className="text-gray-600 max-w-xl">
-            Buttons trigger user actions and communicate hierarchy through
-            variants.
+            Buttons trigger user actions and communicate hierarchy through variants.
           </p>
 
           <div className="flex gap-3 flex-wrap">
@@ -135,10 +135,8 @@ export default function UISystemPage() {
         <div className="space-y-8">
           <h2 className="text-2xl font-semibold">Inputs</h2>
 
-          {/* Primitive Input */}
           <div className="space-y-2 max-w-md">
             <p className="text-sm text-gray-500">Primitive input</p>
-
             <Input
               value={primitiveName}
               onChange={(e) => setPrimitiveName(e.target.value)}
@@ -146,10 +144,8 @@ export default function UISystemPage() {
             />
           </div>
 
-          {/* InputField */}
           <div className="space-y-2 max-w-md">
             <p className="text-sm text-gray-500">InputField (recommended)</p>
-
             <InputField
               label="Name"
               value={fieldName}
@@ -158,10 +154,8 @@ export default function UISystemPage() {
             />
           </div>
 
-          {/* Password */}
           <div className="space-y-2 max-w-md">
             <p className="text-sm text-gray-500">Password</p>
-
             <PasswordInput
               label="Password"
               value={password}
@@ -169,10 +163,8 @@ export default function UISystemPage() {
             />
           </div>
 
-          {/* Search */}
           <div className="space-y-2 max-w-md">
             <p className="text-sm text-gray-500">Search</p>
-
             <SearchInput
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -187,15 +179,9 @@ export default function UISystemPage() {
           <h2 className="text-2xl font-semibold">Cards</h2>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <Card>
-              <Card.Body>Default</Card.Body>
-            </Card>
-            <Card variant="outlined">
-              <Card.Body>Outlined</Card.Body>
-            </Card>
-            <Card variant="elevated">
-              <Card.Body>Elevated</Card.Body>
-            </Card>
+            <Card><Card.Body>Default</Card.Body></Card>
+            <Card variant="outlined"><Card.Body>Outlined</Card.Body></Card>
+            <Card variant="elevated"><Card.Body>Elevated</Card.Body></Card>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6">

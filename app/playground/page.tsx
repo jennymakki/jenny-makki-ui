@@ -21,7 +21,7 @@ export default function PlaygroundPage() {
         </Link>
 
         <div className="space-y-2">
-          <h1 className="text-4xl font-bold tracking-tight text-[#E85AAD]">
+          <h1 className="text-4xl font-bold tracking-tight text-[#F97316]">
             Playground
           </h1>
 

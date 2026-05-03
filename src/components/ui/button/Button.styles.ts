@@ -1,17 +1,17 @@
 export const buttonStyles = {
   base:
     "inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all " +
-    "focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.97] " +
+    "cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 active:scale-[0.97] " +
     "disabled:opacity-50 disabled:cursor-not-allowed shadow-sm",
 
   variants: {
     primary:
-      "bg-[#E85AAD] text-white hover:bg-[#d94a9c] focus:ring-[#f3a4cf]",
+      "bg-[#F97316] text-white hover:bg-[#ea680c] focus:ring-[#fed7aa]",
 
-secondary:
-  "bg-white text-[#E85AAD] border-2 border-[#E85AAD] " +
-  "hover:bg-[#E85AAD] hover:text-white hover:border-[#E85AAD] " +
-  "focus:ring-[#f3a4cf]",
+    secondary:
+      "bg-white text-[#F97316] border-2 border-[#F97316] " +
+      "hover:bg-[#fff3e8] hover:border-[#F97316] " +
+      "focus:ring-[#fed7aa]",
 
     ghost:
       "bg-transparent text-gray-900 hover:bg-gray-100 active:bg-gray-200",
