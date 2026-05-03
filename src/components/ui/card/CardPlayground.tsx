@@ -9,31 +9,30 @@ export default function CardPlayground() {
   >("default");
 
   return (
-    <div className="space-y-6">
-<h2 className="text-lg font-semibold">Card Playground</h2>
-      {/* INFO */}
+    <div className="space-y-8">
       <div className="space-y-1">
+        <h2 className="text-lg font-semibold">Card Playground</h2>
         <p className="text-sm text-gray-600">
           Change variant and explore composition patterns live
         </p>
       </div>
 
-      {/* VARIANT SWITCHER */}
+      {/* SWITCHER */}
       <div className="flex gap-2 flex-wrap">
-        <Button size="small" onClick={() => setVariant("default")}>
+        <Button variant="secondary" size="medium" onClick={() => setVariant("default")}>
           Default
         </Button>
 
-        <Button size="small" onClick={() => setVariant("outlined")}>
+        <Button variant="secondary" size="medium" onClick={() => setVariant("outlined")}>
           Outlined
         </Button>
 
-        <Button size="small" onClick={() => setVariant("elevated")}>
+        <Button variant="secondary" size="medium" onClick={() => setVariant("elevated")}>
           Elevated
         </Button>
       </div>
 
-      {/* MAIN CARD DEMO */}
+      {/* MAIN PLAYGROUND CARD */}
       <Card variant={variant}>
         <Card.Header>Product Card</Card.Header>
 
@@ -61,10 +60,10 @@ export default function CardPlayground() {
         </Card.Footer>
       </Card>
 
-      {/* REAL USE CASES */}
+      {/* STATIC EXAMPLES */}
       <div className="grid md:grid-cols-2 gap-4">
 
-        <Card variant={variant}>
+        <Card variant="outlined">
           <Card.Header>User Profile</Card.Header>
 
           <Card.Body>
@@ -73,7 +72,7 @@ export default function CardPlayground() {
           </Card.Body>
         </Card>
 
-        <Card variant={variant}>
+        <Card variant="elevated">
           <Card.Header>Action Required</Card.Header>
 
           <Card.Body>

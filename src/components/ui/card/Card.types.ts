@@ -1,6 +1,6 @@
 import React from "react";
 
-export type CardVariant = "default" | "outlined" | "elevated";
+export type CardVariant = "default"  | "orange" | "outlined" | "elevated";
 
 export interface CardProps {
   variant?: CardVariant;

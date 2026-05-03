@@ -13,9 +13,8 @@ export default function ChatMessage({ role, text }: ChatMessageProps) {
   return (
     <div className={`flex ${isUser ? "justify-end" : "justify-start"}`}>
       <Card
-        className={`max-w-md ${
-          isUser ? "" : ""
-        }`}
+        variant={isUser ? "orange" : "default"}
+        className="max-w-md"
       >
         <Card.Body>{text}</Card.Body>
       </Card>

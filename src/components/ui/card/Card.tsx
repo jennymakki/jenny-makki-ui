@@ -26,7 +26,9 @@ function CardHeader({
   className?: string;
 }) {
   return (
-    <div className={`mb-3 text-lg font-semibold tracking-tight ${className}`}>
+    <div
+      className={`mb-3 text-lg font-semibold tracking-tight text-inherit ${className}`}
+    >
       {children}
     </div>
   );
@@ -40,7 +42,7 @@ function CardBody({
   className?: string;
 }) {
   return (
-    <div className={`space-y-3 text-sm text-gray-700 ${className}`}>
+    <div className={`space-y-3 text-sm text-inherit ${className}`}>
       {children}
     </div>
   );
@@ -55,7 +57,7 @@ function CardFooter({
 }) {
   return (
     <div
-      className={`mt-4 pt-4 border-t border-gray-100 flex items-center justify-end gap-2 ${className}`}
+      className={`mt-4 pt-4 border-t border-white/10 flex items-center justify-end gap-2 text-inherit ${className}`}
     >
       {children}
     </div>

@@ -14,9 +14,11 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jenny-makki-ui.vercel.app"),
+
   title: "Jenny Makki – UI System",
   description:
     "A reusable UI system built with React, TypeScript, and Tailwind CSS. Explore component-driven patterns including buttons, inputs, cards, and modals designed for scalability and consistency.",
+
   openGraph: {
     title: "Jenny Makki – UI System",
     description:
@@ -24,6 +26,23 @@ export const metadata: Metadata = {
     url: "/",
     siteName: "Jenny Makki UI System",
     type: "website",
+
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Jenny Makki UI System preview",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Jenny Makki – UI System",
+    description:
+      "Component-driven UI system built with React, TypeScript, and Tailwind CSS.",
+    images: ["/og-image.png"],
   },
 };
 

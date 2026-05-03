@@ -10,9 +10,8 @@ import ModalPlayground from "@/src/components/ui/modal/ModalPlayground";
 export default function PlaygroundPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      
       {/* HEADER */}
-      <div className="max-w-6xl mx-auto px-6 pt-12 pb-10 space-y-4">
+      <div className="max-w-6xl mx-auto px-6 pt-12 pb-10 flex flex-col items-center text-center space-y-4">
         <Link
           href="/"
           className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-black transition"
@@ -20,21 +19,20 @@ export default function PlaygroundPage() {
           ← Back to UI System
         </Link>
 
-        <div className="space-y-2">
+        <div className="space-y-2 max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-[#F97316]">
             Playground
           </h1>
 
-          <p className="text-gray-600 max-w-2xl">
-            Experiment with components in real-time. Adjust props, explore states
-            and see how everything behaves.
+          <p className="text-gray-600 max-w-lg">
+            Experiment with components in real-time. Adjust props, explore
+            states and see how everything behaves.
           </p>
         </div>
       </div>
 
       {/* GRID */}
       <div className="max-w-3xl mx-auto px-6 pb-20 space-y-10">
-        
         {/* BUTTON */}
         <section className="space-y-3 group">
           <div className="flex items-center justify-between">
@@ -90,7 +88,6 @@ export default function PlaygroundPage() {
             <ModalPlayground />
           </div>
         </section>
-
       </div>
     </main>
   );
