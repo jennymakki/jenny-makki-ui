@@ -11,6 +11,12 @@ import {
   Modal,
   PasswordInput,
 } from "@/src/components/ui";
+import { ChatMessage } from "@/src/components/chat";
+
+type Message = {
+  role: "user" | "ai";
+  text: string;
+};
 
 export default function ChatDemoPage() {
   const [open, setOpen] = useState(false);
@@ -19,7 +25,7 @@ export default function ChatDemoPage() {
   const [username, setUsername] = useState("");
   const [apiKey, setApiKey] = useState("");
 
-  const [messages, setMessages] = useState([
+  const [messages, setMessages] = useState<Message[]>([
     { role: "ai", text: "Hi! How can I help you today?" },
   ]);
 
@@ -38,6 +44,7 @@ export default function ChatDemoPage() {
   return (
     <div className="h-screen flex bg-gray-50">
 
+      {/* SIDEBAR */}
       <aside className="w-80 border-r bg-white p-4 space-y-4">
         <h2 className="font-semibold text-lg">Chats</h2>
 
@@ -60,11 +67,15 @@ export default function ChatDemoPage() {
           </Card>
         </div>
 
-        <Button variant="secondary" className="w-full" onClick={() => setOpen(true)}>
+        <Button
+          variant="secondary"
+          className="w-full"
+          onClick={() => setOpen(true)}
+        >
           Settings
         </Button>
 
-                <Link
+        <Link
           href="/"
           className="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-black transition"
         >
@@ -72,22 +83,17 @@ export default function ChatDemoPage() {
         </Link>
       </aside>
 
+      {/* MAIN CHAT */}
       <main className="flex-1 flex flex-col">
 
+        {/* MESSAGES */}
         <div className="flex-1 p-6 space-y-4 overflow-auto">
           {messages.map((m, i) => (
-            <div
-              key={i}
-              className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
-            >
-              <Card className="max-w-md">
-                <Card.Body>{m.text}</Card.Body>
-              </Card>
-            </div>
+            <ChatMessage key={i} role={m.role} text={m.text} />
           ))}
         </div>
 
-        {/* input */}
+        {/* INPUT */}
         <div className="border-t p-4 flex gap-3">
           <Input
             value={message}
@@ -99,25 +105,26 @@ export default function ChatDemoPage() {
         </div>
       </main>
 
+      {/* SETTINGS MODAL */}
       <Modal open={open} onClose={() => setOpen(false)}>
         <Modal.Header onClose={() => setOpen(false)}>
           Settings
         </Modal.Header>
 
-<Modal.Body className="space-y-4">
-  <InputField
-    label="Username"
-    value={username}
-    onChange={(e) => setUsername(e.target.value)}
-    placeholder="Jenny"
-  />
+        <Modal.Body className="space-y-4">
+          <InputField
+            label="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            placeholder="Jenny"
+          />
 
-  <PasswordInput
-    label="API Key"
-    value={apiKey}
-    onChange={(e) => setApiKey(e.target.value)}
-  />
-</Modal.Body>
+          <PasswordInput
+            label="API Key"
+            value={apiKey}
+            onChange={(e) => setApiKey(e.target.value)}
+          />
+        </Modal.Body>
 
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setOpen(false)}>
